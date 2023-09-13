@@ -6,23 +6,32 @@ namespace  Threading
         static void Main() 
         { 
 
-            Thread WorkerThread = new Thread(new ThreadStart(print));
-            WorkerThread.Start();
+            Thread SecondaryThread = new Thread(new ThreadStart(print));
+            SecondaryThread.Start();
 
            for (int i = 0; i<10; i++)
             {
-                Console.WriteLine($"main Thread:{i}");
+                Console.WriteLine($"Primary Thread:{i}");
                 Thread.Sleep(1000);
             }
-              Console.ReadKey();
+           
+            
+                Thread t;
+                t = Thread.CurrentThread;
+                Console.WriteLine("Thread is Alive or Not: {0}", t.IsAlive);
+                Thread.Sleep(10000);
+
+            
+            Console.ReadKey();
 
             }
         static void print()
         {
             for (int i = 11; i < 20; i++) {
-                Console.WriteLine($"WorkerThread:{i}");
+                Console.WriteLine($"SecondaryThread:{i}");
                 Thread.Sleep(1000);
                     }
         }
+        
         }
 }
