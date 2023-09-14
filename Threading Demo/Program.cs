@@ -2,10 +2,11 @@
 using System.Threading;
 namespace  Threading
 { 
-    class Program { 
+    class Program {
+
         static void Main() 
         { 
-
+            
             Thread SecondaryThread = new Thread(new ThreadStart(print));
             SecondaryThread.Start();
 
